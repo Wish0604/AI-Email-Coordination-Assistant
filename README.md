@@ -1,493 +1,243 @@
 # AI Email Coordination Assistant
 
-Autonomous Email Scheduling with Voice Commands and Adaptive Learning.
-
-An AI-powered digital executive assistant that coordinates meetings through email conversations. It monitors inbox activity, understands scheduling discussions, finds overlapping availability, schedules meetings, sends confirmations, summarizes threads, supports voice commands, and improves decisions over time through adaptive learning.
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Problem Statement](#problem-statement)
-- [Core Capabilities](#core-capabilities)
-- [System Architecture](#system-architecture)
-- [Tech Stack](#tech-stack)
-- [End-to-End Workflow](#end-to-end-workflow)
-- [Project Structure](#project-structure)
-- [Setup and Installation](#setup-and-installation)
-- [Configuration](#configuration)
-- [API Design (Draft)](#api-design-draft)
-- [Database Design (Draft)](#database-design-draft)
-- [Voice Command Examples](#voice-command-examples)
-- [Adaptive Learning Strategy](#adaptive-learning-strategy)
-- [Security and Privacy](#security-and-privacy)
-- [Human Override and Safety](#human-override-and-safety)
-- [Testing Strategy](#testing-strategy)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-
----
+Autonomous Scheduling with Voice Control, Negotiation & Adaptive Learning
 
 ## Overview
 
-The AI Email Coordination Assistant automates the complete meeting coordination lifecycle:
+The AI Email Coordination Assistant is an autonomous digital executive assistant that automates email-based scheduling and communication workflows. Professionals often spend significant time coordinating meetings through email threads, responding to availability requests, and manually scheduling events.
 
-1. Monitor incoming email messages.
-2. Detect scheduling intent in conversations.
-3. Extract participants, dates, and time expressions from natural language.
-4. Compute overlapping availability across multiple participants and time zones.
-5. Create calendar events and send invitations.
-6. Respond to email threads as an autonomous assistant identity.
-7. Learn user scheduling preferences to improve future decisions.
+This system monitors incoming emails, detects scheduling discussions, extracts availability from participants, computes overlapping time slots, and automatically schedules meetings through calendar integration.
 
-The result is less manual back-and-forth and significantly faster scheduling.
+The assistant also supports voice commands, intelligent negotiation of meeting times, and adaptive user learning, enabling it to behave like a proactive AI assistant similar to a personal executive assistant.
 
----
+## Problem
 
-## Problem Statement
+Email-based scheduling requires multiple manual steps:
 
-Professionals lose time in repetitive meeting coordination tasks:
+- Sending scheduling requests
+- Waiting for responses
+- Manually comparing availability
+- Creating calendar events
+- Sending invitations
 
-- Long email threads with unclear availability
-- Manual calendar checks and conflict resolution
-- Time zone mismatches
-- Repeated follow-up messages
+This process leads to long email threads, delays, and productivity loss.
 
-This system converts manual scheduling into a reliable, autonomous workflow.
+The goal is to create an AI assistant that automates this entire workflow without requiring manual intervention.
 
----
+## Objectives
 
-## Core Capabilities
+- Automate meeting scheduling through email conversations
+- Reduce manual coordination effort
+- Extract availability from natural language emails
+- Automatically schedule meetings and send invitations
+- Provide contextual thread updates
+- Enable voice interaction
+- Learn user behavior for smarter scheduling
+- Resolve scheduling conflicts autonomously
 
-### 1) Email Monitoring
+## Core Features
 
-- Real-time inbox monitoring (IMAP / SMTP / Gmail API)
-- Detection of scheduling and availability requests
-- Automatic ingestion and processing of new thread messages
+### Email Monitoring
 
-### 2) Intelligent Scheduling Engine
+- Monitor incoming emails automatically
+- Detect scheduling and availability requests
+- Process emails via SMTP / IMAP / Gmail API
+- Handle email threads in real time
 
-- Extract availability from free-form text (for example: "tomorrow afternoon", "next Monday", "between 2-4 PM")
-- Merge availability across participants
-- Detect and resolve calendar conflicts
-- Suggest alternate slots when overlap is not found
-- Auto-create meetings when confidence is high
+### Intelligent Scheduling
 
-### 3) Calendar Integration
+- Parse availability from free-form emails
+- Handle multiple participants with different time slots
+- Compute overlapping availability
+- Automatically schedule meetings
+- Suggest alternative meeting times
 
-- Google Calendar event creation
-- Automatic invitation dispatch
-- Duplicate meeting prevention
-- Meeting update and cancellation handling
+### Calendar Automation
 
-### 4) Natural Language Understanding
+- Google Calendar API integration
+- Automatic meeting creation
+- Send calendar invitations
+- Prevent duplicate meetings
+- Update or cancel meetings when required
 
-Extracts:
+### Thread Intelligence
 
-- Date and time
-- Participants
-- Meeting intent
-- Contextual constraints (duration, urgency, timezone hints)
-
-### 5) Email Thread Intelligence
-
-- Full-thread context tracking
-- Latest decision extraction
-- Thread-level summarization
-
-Example query:
-
-- "What is the latest update on the project?"
-
-Example response:
-
-- "The AI model training completed yesterday and the review meeting is scheduled tomorrow."
-
-### 6) Autonomous Assistant Identity
-
-- Dedicated assistant email address
-- Automatic confirmations and follow-ups
-- Mandatory AI disclaimer in all outgoing emails
-
-Required disclaimer:
-
-> This message was sent by an experimental AI email assistant.
-
-### 7) Voice Command Interface
-
-- Speech-to-text input
-- Voice-based scheduling requests
-- Voice-based email and calendar queries
-- Text-to-speech responses
-
-### 8) Adaptive User Learning
-
-Learns over time:
-
-- Preferred meeting windows
-- Frequent collaborators
-- Typical meeting durations
-- Historical acceptance/rejection patterns
-
-### 9) Multi-Timezone Support
-
-- Timezone detection and normalization
-- Cross-region overlap calculation
-- Timezone conflict prevention
-
-### 10) Conflict Resolution and Clarification
-
-- Detect no-overlap conditions
-- Propose nearest best alternatives
-- Ask clarification questions for ambiguous requests
+- Read entire email conversations
+- Extract latest status information
+- Maintain conversational context
+- Generate contextual summaries
 
 Example:
 
-- Input: "Let's meet tomorrow."
-- Assistant: "Could you please specify a preferred time?"
+User asks: "What is the latest update?"
 
-### 11) Priority-Based Scheduling
+Assistant response: "The AI model training completed yesterday and a review meeting is scheduled tomorrow."
 
-- High: executives / clients
-- Medium: internal teams
-- Low: optional participants
+### Autonomous Email Assistant
 
-### 12) Human Override
+- Operates through a dedicated assistant email address
+- Responds automatically to participants
+- Coordinates meeting discussions
+- Sends scheduling confirmations
+- Includes mandatory AI disclaimer in all outgoing emails
 
-- Edit AI-proposed meetings
-- Cancel scheduled meetings
-- Pause automation when needed
+## Advanced Features
 
----
+### Voice Command Interface
+
+Users can interact with the assistant using voice commands.
+
+Examples:
+
+- "Schedule a meeting with Rahul tomorrow at 3 PM."
+- "Read my latest email."
+- "When is my next meeting?"
+
+Capabilities:
+
+- Speech-to-text processing
+- AI command interpretation
+- Voice-based scheduling
+- Text-to-speech responses
+
+### Autonomous Negotiation Agent
+
+If participants have conflicting availability, the assistant automatically negotiates a meeting time through email.
+
+Example workflow:
+
+1. Detect conflicting time slots
+2. Suggest alternative meeting times
+3. Continue conversation until agreement
+4. Schedule meeting automatically
+
+This enables the system to behave like a human executive assistant negotiating schedules.
+
+### Adaptive User Learning
+
+The assistant learns user behavior over time to improve scheduling decisions.
+
+Learning capabilities:
+
+- Preferred meeting hours
+- Frequent collaborators
+- Scheduling habits
+- Meeting patterns
+
+Example: If a user typically schedules meetings between 10 AM – 4 PM, the assistant prioritizes those times.
+
+### Multi-Timezone Support
+
+- Automatic timezone detection
+- Cross-region meeting scheduling
+- Time normalization across participants
+- Prevention of timezone conflicts
+
+### Conflict Resolution System
+
+- Detect overlapping meetings
+- Suggest best available time slots
+- Ask clarification questions when requests are ambiguous
+
+Example:
+
+User email: "Let's meet tomorrow."
+
+Assistant response: "Could you please specify a preferred time?"
+
+### Priority-Based Scheduling
+
+Participants can be assigned priority levels.
+
+- High Priority: Executives, Clients
+- Medium Priority: Internal teams
+- Low Priority: Optional participants
+
+### Human Override Capability
+
+Users can manually override AI decisions when needed.
+
+Capabilities:
+
+- Edit scheduled meetings
+- Cancel meetings
+- Temporarily disable automation
 
 ## System Architecture
 
-```text
-User (Email / Voice)
-        |
-Email Gateway + Voice Interface
-        |
-AI Processing Engine (LLM + NLP)
-        |
+The system consists of the following components:
+
+1. User Interaction Layer (Email + Voice)
+2. Email Processing Module
+3. Voice Interface
+4. AI Processing Engine
+5. Scheduling Engine
+6. Thread Intelligence Module
+7. User Learning Module
+8. Task Execution Layer
+9. Calendar Integration
+10. Database Layer
+
+Architecture flow:
+
+```
+User Email / Voice
+↓
+Email Gateway / Voice Interface
+↓
+AI Processing Engine (NLP / LLM)
+↓
 Scheduling Engine
-        |
+↓
 Thread Intelligence + User Learning
-        |
-Task Execution Layer
-        |
-Google Calendar + Email Responses
-        |
-Database (Preferences + History + Audit)
+↓
+Calendar Integration + Email Response
+↓
+Database
 ```
 
-### Mermaid Diagram
-
-```mermaid
-flowchart TD
-    A[User: Email or Voice] --> B[Email Gateway and Voice Interface]
-    B --> C[AI Processing Engine]
-    C --> D[Scheduling Engine]
-    D --> E[Thread Intelligence and Adaptive Learning]
-    E --> F[Task Execution Layer]
-    F --> G[Google Calendar API]
-    F --> H[Email Provider API]
-    E --> I[(PostgreSQL or MongoDB)]
-```
-
----
-
-## Tech Stack
+## Technology Stack
 
 ### Frontend
 
 - React.js
 - Tailwind CSS
-- Web Speech API (voice input/output)
+- Web Speech API
 
 ### Backend
 
 - Python
-- FastAPI (recommended) or Flask
+- FastAPI / Flask
 
-### AI and NLP
+### AI / NLP
 
-- OpenAI / Gemini / LLaMA for language understanding
-- Whisper for speech recognition
-- Time parsing libraries (for example: `dateparser`, `duckling`, `chrono`-style parsers)
+- OpenAI / Gemini / LLaMA
+- Whisper (Speech Recognition)
 
 ### Integrations
 
-- Gmail API or IMAP/SMTP connectors
+- Gmail API
 - Google Calendar API
 
 ### Database
 
-- PostgreSQL (recommended for relational scheduling data)
-- MongoDB (optional for flexible document-style thread storage)
+- PostgreSQL / MongoDB
 
----
+## System Workflow
 
-## End-to-End Workflow
+1. Assistant monitors incoming emails
+2. AI detects scheduling intent
+3. Extracts participants and time slots
+4. Scheduling engine finds overlapping availability
+5. Negotiation agent resolves conflicts if needed
+6. Meeting is created in Google Calendar
+7. Invitations are automatically sent
+8. Email confirmation is generated
+9. User preference model updates for future decisions
 
-1. Assistant monitors incoming emails.
-2. AI model detects scheduling intent.
-3. NLP extracts time expressions and participants.
-4. Scheduling engine computes overlap and resolves conflicts.
-5. Calendar event is created via Google Calendar API.
-6. Invitations and confirmations are sent.
-7. Thread summary is updated.
-8. User preference model is incrementally updated.
+## Expected Outcome
 
----
+The final system provides a fully autonomous AI email assistant capable of coordinating meetings, responding to email queries, interacting via voice commands, negotiating scheduling conflicts, and learning user preferences.
 
-## Project Structure
-
-```text
-ai-email-coordination-assistant/
-  frontend/
-    src/
-      components/
-      pages/
-      hooks/
-      services/
-  backend/
-    app/
-      api/
-      core/
-      models/
-      services/
-      integrations/
-      scheduler/
-      nlp/
-      voice/
-      learning/
-      utils/
-    tests/
-  docs/
-    architecture/
-    api/
-    diagrams/
-  scripts/
-  .env.example
-  docker-compose.yml
-  README.md
-```
-
----
-
-## Setup and Installation
-
-### Prerequisites
-
-- Python 3.11+
-- Node.js 20+
-- Google Cloud project with Gmail and Calendar APIs enabled
-- OAuth credentials and redirect URIs configured
-
-### 1) Clone Repository
-
-```bash
-git clone https://github.com/<your-org>/ai-email-coordination-assistant.git
-cd ai-email-coordination-assistant
-```
-
-### 2) Backend Setup
-
-```bash
-cd backend
-python -m venv .venv
-# Windows PowerShell
-. .venv/Scripts/Activate.ps1
-pip install -r requirements.txt
-```
-
-### 3) Frontend Setup
-
-```bash
-cd ../frontend
-npm install
-npm run dev
-```
-
-### 4) Run Backend
-
-```bash
-cd ../backend
-uvicorn app.main:app --reload --port 8000
-```
-
-### 5) Optional Docker
-
-```bash
-docker compose up --build
-```
-
----
-
-## Configuration
-
-Create `.env` files for backend and frontend.
-
-Example backend `.env`:
-
-```env
-APP_ENV=development
-APP_PORT=8000
-
-OPENAI_API_KEY=
-GEMINI_API_KEY=
-
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-GOOGLE_REDIRECT_URI=
-GOOGLE_CALENDAR_ID=primary
-
-GMAIL_WATCH_TOPIC=
-GMAIL_CREDENTIALS_PATH=
-
-DATABASE_URL=postgresql://user:password@localhost:5432/email_assistant
-
-ENCRYPTION_KEY=
-JWT_SECRET=
-
-ASSISTANT_EMAIL=assistant@yourdomain.com
-MANDATORY_AI_DISCLAIMER=This message was sent by an experimental AI email assistant.
-```
-
----
-
-## API Design (Draft)
-
-### Health
-
-- `GET /health` - service status
-
-### Email and Threads
-
-- `POST /emails/webhook` - ingest incoming email event
-- `GET /threads/{thread_id}` - retrieve thread with summary
-- `POST /threads/{thread_id}/summarize` - regenerate summary
-
-### Scheduling
-
-- `POST /schedule/extract` - parse availability from text
-- `POST /schedule/compute` - compute overlap across participants
-- `POST /schedule/confirm` - create event and send invites
-- `POST /schedule/cancel` - cancel existing event
-
-### Voice
-
-- `POST /voice/transcribe` - speech to text
-- `POST /voice/command` - parse and execute voice intent
-- `POST /voice/respond` - text to speech output
-
-### Preferences and Learning
-
-- `GET /users/{user_id}/preferences`
-- `POST /users/{user_id}/preferences/update`
-- `POST /learning/feedback` - explicit user corrections
-
-### Human Override
-
-- `POST /override/pause`
-- `POST /override/resume`
-- `POST /override/manual-edit`
-
----
-
-## Database Design (Draft)
-
-### Suggested Core Tables (PostgreSQL)
-
-- `users`
-- `participants`
-- `threads`
-- `emails`
-- `meetings`
-- `meeting_participants`
-- `availability_blocks`
-- `user_preferences`
-- `learning_events`
-- `audit_logs`
-
-### Example Data Captured
-
-- Preferred meeting window (for example, 10:00-16:00)
-- Typical meeting duration by meeting type
-- Participant priority class
-- Accepted vs rejected suggestions
-
----
-
-## Voice Command Examples
-
-- "Schedule a meeting with Rahul tomorrow at 3 PM"
-- "Read my latest email"
-- "Am I free tomorrow afternoon?"
-- "Move Friday's review meeting to next Monday at 11 AM"
-
----
-
-## Adaptive Learning Strategy
-
-1. Capture user actions and corrections.
-2. Convert actions to explicit preference signals.
-3. Score candidate slots using learned features.
-4. Apply confidence thresholds for automation.
-5. Fall back to clarification when confidence is low.
-
-### Example
-
-If a user consistently accepts meetings between 10 AM and 4 PM, those slots receive higher ranking in future scheduling decisions.
-
----
-
-## Security and Privacy
-
-- OAuth2-based secure API access
-- Encrypted token and credential storage
-- TLS-only external API communication
-- Scoped permissions for Gmail and Calendar access
-- Data minimization for stored email content
-- Audit logs for automated actions
-- Role-based control for admin and override operations
-
----
-
-## Human Override and Safety
-
-- Manual edit/cancel at any point
-- Automation pause switch
-- Clarification prompts on ambiguity
-- Transparent AI-generated responses with mandatory disclaimer
-
----
-
-## Testing Strategy
-
-- Unit tests: intent detection, time extraction, overlap logic
-- Integration tests: Gmail/Calendar API flows
-- End-to-end tests: full email-to-calendar lifecycle
-- Regression tests: timezone edge cases and DST transitions
-- Voice tests: transcription quality and command routing
-
-Recommended tools:
-
-- `pytest`
-- `httpx` / `pytest-asyncio`
-- `Playwright` for frontend and flow automation
-
----
-
-## Roadmap
-
-- Slack and Microsoft Teams integration
-- Meeting analytics and productivity insights
-- Automated reminders and follow-up workflows
-- Integration with project management tools
-- Advanced recommendation ranking models
-
----
+This significantly reduces manual scheduling effort and improves productivity in professional workflows.
 
