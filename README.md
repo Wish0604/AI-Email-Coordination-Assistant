@@ -1,5 +1,8 @@
 # AI Email Coordination Assistant
 
+# MVP Screenshots
+"C:\Users\Vishwanath\Downloads\stitch_product_requirements_document_prd\stitch_product_requirements_document_prd\dashboard_dark_mode\screen.png"
+
 Autonomous Scheduling with Voice Control, Negotiation & Adaptive Learning
 
 ## Overview
